@@ -2,6 +2,8 @@
 
 A lightweight Windows display resolution switcher with a WPF GUI. Quickly switch between common display resolutions (4K, 1080p, and 1280x1024) with a single click or keyboard shortcut.
 
+**🔍 Pure PowerShell - No executables**: This tool is a single PowerShell script with no compiled binaries or external dependencies. All code is fully transparent and auditable - you can read exactly what it does before running it. No installation required, just PowerShell (built into Windows).
+
 ## 📸 Screenshot
 
 ![Resolution Switcher GUI](images/screenshot.png)
