@@ -2,6 +2,10 @@
 
 A lightweight Windows display resolution switcher with a WPF GUI. Quickly switch between common display resolutions (4K, 1080p, and 1280x1024) with a single click or keyboard shortcut.
 
+## 📸 Screenshot
+
+![Resolution Switcher GUI](images/screenshot.png)
+
 ## 💡 Motivation
 
 I created this tool to solve a specific problem: when I need to use 1280x1024 resolution for certain games on my primary monitor, allowing the game to switch to that resolution causes all windows and applications on my secondary monitor to get offset and pushed off-screen. This tool provides a quick way to switch resolutions first without disrupting my multi-monitor setup.
