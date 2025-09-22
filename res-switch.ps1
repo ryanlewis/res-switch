@@ -56,7 +56,7 @@ public class DisplaySettings {
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         Title="Resolution Switcher" 
         Height="320" Width="400"
-        ResizeMode="NoResize"
+        ResizeMode="CanMinimize"
         WindowStartupLocation="CenterScreen"
         Background="#1e1e1e">
     <Window.Resources>
@@ -127,27 +127,27 @@ public class DisplaySettings {
             <Button Name="Btn4K" 
                     Width="200" 
                     Height="45">
-                <StackPanel>
-                    <TextBlock Text="4K Ultra HD" FontWeight="Bold"/>
-                    <TextBlock Text="3840 x 2160" FontSize="11" Foreground="#b0b0b0"/>
+                <StackPanel HorizontalAlignment="Center">
+                    <TextBlock Text="4K Ultra HD" FontWeight="Bold" TextAlignment="Center"/>
+                    <TextBlock Text="3840 x 2160" FontSize="11" Foreground="#b0b0b0" TextAlignment="Center"/>
                 </StackPanel>
             </Button>
             
             <Button Name="Btn1080p" 
                     Width="200" 
                     Height="45">
-                <StackPanel>
-                    <TextBlock Text="Full HD" FontWeight="Bold"/>
-                    <TextBlock Text="1920 x 1080" FontSize="11" Foreground="#b0b0b0"/>
+                <StackPanel HorizontalAlignment="Center">
+                    <TextBlock Text="Full HD" FontWeight="Bold" TextAlignment="Center"/>
+                    <TextBlock Text="1920 x 1080" FontSize="11" Foreground="#b0b0b0" TextAlignment="Center"/>
                 </StackPanel>
             </Button>
             
             <Button Name="Btn1280" 
                     Width="200" 
                     Height="45">
-                <StackPanel>
-                    <TextBlock Text="Gaming Mode" FontWeight="Bold"/>
-                    <TextBlock Text="1280 x 1024" FontSize="11" Foreground="#b0b0b0"/>
+                <StackPanel HorizontalAlignment="Center">
+                    <TextBlock Text="Gaming Mode" FontWeight="Bold" TextAlignment="Center"/>
+                    <TextBlock Text="1280 x 1024" FontSize="11" Foreground="#b0b0b0" TextAlignment="Center"/>
                 </StackPanel>
             </Button>
         </StackPanel>
