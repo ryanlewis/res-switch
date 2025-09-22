@@ -1,6 +1,6 @@
 # res-switch 🖥️
 
-A lightweight Windows display resolution switcher with a WPF GUI. Quickly switch between common display resolutions (4K, 1080p, and 1280x1024) with a single click or keyboard shortcut.
+A lightweight Windows display resolution switcher with a WPF GUI. Quickly switch between common display resolutions with a single click or keyboard shortcut. Supports custom resolutions via configuration file.
 
 **🔍 Pure PowerShell - No executables**: This tool is a single PowerShell script with no compiled binaries or external dependencies. All code is fully transparent and auditable - you can read exactly what it does before running it. No installation required, just PowerShell (built into Windows).
 
@@ -19,16 +19,16 @@ I created this tool to solve a specific problem: when I need to use 1280x1024 re
 ## ✨ Features
 
 - **Simple Dark Theme GUI** - Simple, clean interface built with WPF
-- **Quick Resolution Switching** - Switch between presets instantly:
-  - 4K Ultra HD (3840 x 2160)
-  - Full HD (1920 x 1080)
-  - Gaming Mode (1280 x 1024)
+- **Customizable Resolutions** - Configure your own resolution presets via PSD1 file
+- **Quick Resolution Switching** - Default presets or your custom configurations:
+  - Default: 4K Ultra HD (3840 x 2160)
+  - Default: Full HD (1920 x 1080)
+  - Default: Gaming Mode (1280 x 1024)
 - **Keyboard Shortcuts**:
-  - Press `1` - Switch to 4K
-  - Press `2` - Switch to 1080p
-  - Press `3` - Switch to Gaming Mode
+  - Press `1-9` - Switch to corresponding resolution
   - Press `ESC` - Close the application
 - **Current Resolution Display** - Shows your current resolution and refresh rate
+- **Dynamic UI** - Interface adjusts to show configured resolutions
 
 ## 🚀 Quick Start (Remote Execution)
 
@@ -82,10 +82,55 @@ This creates a desktop shortcut with:
 
 1. Launch the application using any of the methods above
 2. The GUI will display your current resolution at the top
-3. Click on any resolution button to switch, or use keyboard shortcuts (1, 2, 3)
+3. Click on any resolution button to switch, or use keyboard shortcuts (1-9)
 4. The active resolution is highlighted in blue
 5. Status messages appear at the bottom for feedback
 6. Press ESC or close the window to exit
+
+## ⚙️ Configuration
+
+The application supports custom resolutions via a PowerShell Data file (PSD1). By default, it includes 4K, 1080p, and 1280x1024 resolutions.
+
+### Creating a Custom Configuration
+
+1. Copy the example configuration file:
+   ```powershell
+   Copy-Item res-switch.psd1.example res-switch.psd1
+   ```
+
+2. Edit `res-switch.psd1` with your preferred resolutions:
+   ```powershell
+   @{
+       Resolutions = @(
+           @{
+               Name = "5K Ultrawide"
+               Width = 5120
+               Height = 1440
+               Shortcut = "1"  # Optional: keyboard shortcut
+           },
+           @{
+               Name = "QHD"
+               Width = 2560
+               Height = 1440
+               Shortcut = "2"
+           },
+           # Add more resolutions as needed (up to 9)
+       )
+   }
+   ```
+
+3. The script will automatically load your configuration on next run
+
+### Configuration Locations
+
+The script looks for configuration files in this order:
+1. Same directory as the script: `res-switch.psd1`
+2. User profile: `%USERPROFILE%\.res-switch\res-switch.psd1`
+3. If no config found, uses built-in defaults
+
+### Remote Execution with Configuration
+
+When running remotely, the script will use default resolutions unless you have a configuration file in your user profile directory.
 
 ## 🔧 Technical Details
 
@@ -108,17 +153,18 @@ The application uses:
 
 ```
 res-switch/
-├── res-switch.ps1        # Main PowerShell script with WPF GUI
-├── res-switch.bat        # Batch launcher (bypasses execution policy)
-├── create-shortcut.cmd   # Creates desktop shortcut with icon
-├── CLAUDE.md             # AI assistant instructions
-└── README.md             # This file
+├── res-switch.ps1          # Main PowerShell script with WPF GUI
+├── res-switch.psd1.example # Example configuration file
+├── res-switch.bat          # Batch launcher (bypasses execution policy)
+├── create-shortcut.cmd     # Creates desktop shortcut with icon
+├── CLAUDE.md               # AI assistant instructions
+└── README.md               # This file
 ```
 
 ## 💻 System Requirements
 
 - **Windows 10/11** (Windows 7/8 may work but untested)
-- **PowerShell 5.0** or higher (comes with Windows 10+)
+- **PowerShell 5.0** or higher (comes with Windows 10+, required for Import-PowerShellDataFile)
 - **.NET Framework 4.5** or higher (for WPF)
 
 ## 🛡️ Security
@@ -150,10 +196,10 @@ Contributions are welcome! Please feel free to submit a Pull Request. For major 
 
 ## 📝 TODO
 
-- [ ] Add custom resolution input option
+- [x] Add configuration file support for custom resolutions
 - [ ] Support for multiple monitors
 - [ ] Remember user preferences
-- [ ] Add more gaming-focused resolutions (1440p, ultrawide)
+- [ ] Add refresh rate configuration option
 - [ ] System tray integration for quick access
 
 ## 👤 Author
